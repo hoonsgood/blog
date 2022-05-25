@@ -1,0 +1,144 @@
+## Flexbox
+
+Flexbox는 HTML의 레이아웃을 디자인 하기위해 사용되는 메소드이다.
+
+## 사용방법
+
+### Flexbox로 레이아웃할 요소 지정
+
+Flex item들을 레이아웃하기 위해 이들을 감싸고 있는 container 요소에 `flex` 속성을 추가한다.
+
+```css
+.container {
+  display: flex;
+}
+```
+
+### Flex model
+
+Flexbox로 레이아웃될 때 내부 요소들은 두 개의 축(main axis, cross axis)을 따라 배치된다.\
+`display: flex`가 설정된 부모 요소를 `flex container`라고 한다.\
+Flex container 내부에 flexbox로 레이아웃되는 요소를 `flex item`이라고 한다.
+<img src="img/flexbox1.png" width="80%" height="80%">
+
+### flex-direction
+
+Flexbox는 축을 설정할 수 있는 `flex-direction` 속성을 제공한다.\
+기본값은 `row`이며, 브라우저 기본 언어가 작동하는 방향을 따라 일렬로 배치된다.\
+다음 스타일 속성을 `flex container`스타일에 추가한다.
+
+```css
+.container {
+  flex-direction: row;
+  /* row(default) | row-reverse | column | column-reverse */
+}
+```
+
+### flex-wrap
+
+기본적으로 flex item들은 한 줄에 배치된다.\
+만약 flex item들이 flex container의 넓이보다 넓어진 경우,\
+ `flex-wrap`을 이용해서 줄바꿈을 진행할 수 있다.
+
+```css
+.container {
+  flex-wrap: wrap;
+  /* nowrap(default) | wrap | wrap-reverse */
+}
+```
+
+### flex-flow
+
+flex-direction과 flex-wrap을 한번에 설정할 때에는 `flex-flow`를 사용한다.
+
+```css
+.container {
+  flex-flow: column nowrap;
+}
+```
+
+### justify-content
+
+main-axis에 따라 alignment를 지정하기 위해서는 `justify-content`를 사용한다.
+
+```css
+.container {
+  justify-content: flex-start;
+  /* flex-start(default) | flex-end | center | space-between | space-around | space-evenly */
+}
+```
+
+<img src="img/flexbox2.svg" width="30%" height="30%">
+
+### align-items
+
+cross-axis에 따라 alignment를 지정하기 위해서는 `align-items`를 사용한다.
+
+```css
+.container {
+  align-items: stretch;
+  /* stretch(default) | flex-start | flex-end | center | baseline */
+}
+```
+
+<img src="img/flexbox3.svg" width="30%" height="30%">
+
+### align-content
+
+cross-axis에 대한 정렬 방법을 설정한다.\
+`flex-wrap`이 wrap, wrap-reverse 상태에서, main-axis로 배치된 flex item이 2줄 이상일 때 동작된다.
+
+```css
+.container {
+  align-content: flex-start;
+  /* flex-start | flex-end | center | stretch | space-between | space-around | space-evenly */
+}
+```
+
+<img src="img/flexbox4.svg" width="30%" height="30%">
+
+### order
+
+기본적으로 flex item은 html소스 순서대로 배치되지만,\
+직접 순서를 정하고 싶은 경우 `order`를 사용한다.
+
+```css
+.item {
+  order: 5;
+}
+```
+
+### flex-grow
+
+flex item을 flex container 빈 공간을 채울 때, `flex-grow`를 사용한다.
+
+```css
+.item {
+  flex-grow: 1;
+  /* 0보다 큰 값*/
+}
+```
+
+### flex-basis
+
+flex item을 flex container에 비율에 따라 배치할 때 `flex-basis`를 사용한다.
+
+```css
+.item {
+  flex-basis: 20%;
+  /* auto 또는 0보다 큰 값 */
+}
+```
+
+### align-self
+
+flex item 중 특정 item만 `align-items`을 따로 적용할 때, `align-self`를 사용한다.
+
+```css
+.item {
+  align-self: flex-end;
+  /*  auto | flex-start | flex-end | center | baseline | stretch */
+}
+```
+
+<img src="img/flexbox5.svg" width="30%" height="30%">
